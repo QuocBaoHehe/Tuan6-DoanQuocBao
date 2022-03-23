@@ -63,16 +63,16 @@ namespace LTWEBQBAO.Controllers
 
 
         [HttpGet]
-        public ActionResult DangNhap()
+                public ActionResult DangNhap()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult DangNhap(FormCollection collection)
+                public ActionResult DangNhap(FormCollection collection)
         {
-            var tendangnhap = collection["Tên đăng nhập"];
-            var matkhau = collection["Mật khẩu"];
-            KhachHang kh = data.KhachHangs.SingleOrDefault(n => n.tendangnhap == tendangnhap && n.matkhau == matkhau);
+            var tendangnhap = collection["tendangnhap"];
+            var matkhau = collection["matkhau"];
+            KhachHang kh = data.KhachHangs.FirstOrDefault(n => n.tendangnhap == tendangnhap && n.matkhau == matkhau);
             if (kh != null)
             {
                 ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
